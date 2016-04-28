@@ -8,7 +8,7 @@ namespace Task2
     {
         private decimal m_price; 
         /// <summary>
-		/// Creates a new book object.
+		/// Creates a new dvd object.
 		/// </summary>
 		/// <param name="title">Title must not be empty.</param>
 		/// <param name="playingTime">Playing time must be positive.</param>
@@ -64,7 +64,7 @@ namespace Task2
         }
 
         /// <summary>
-        /// Updates the book's price.
+        /// Updates the dvd's price.
         /// </summary>
         /// <param name="newPrice">Price must not be negative.</param>
         /// <param name="newCurrency">Currency.</param>
