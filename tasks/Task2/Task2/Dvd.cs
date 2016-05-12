@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace Task2
 {
-    class Dvd
+    class Dvd : Media
     {
         private decimal m_price; 
         /// <summary>
