@@ -18,7 +18,7 @@ namespace Task2
             if (string.IsNullOrWhiteSpace(title)) throw new ArgumentException("Title must not be empty.", nameof(title));
             if (playingTime <= 0) throw new ArgumentException("playingTime must more than 0.", nameof(playingTime));
             this.title = title;
-            this.playingTime = playingTime; //auch set methode
+            this.playingTime = playingTime;
             UpdatePrice(price, currency);
         }
 
