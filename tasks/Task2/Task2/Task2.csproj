@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Currency.cs" />
     <Compile Include="Dvd.cs" />
+    <Compile Include="Media.cs" />
+    <Compile Include="MusicCD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -23,13 +23,25 @@ namespace Task2
                 printInformation(dvd);
             }
 
+            //task3 todo 
+            var media = new Media[]
+            {
+                new Dvd("Hör mal wer da hämmert - Staffel 1", 569, 9.99m, Currency.EUR),
+                new MusicCD("Chaos and the Calm", "James Bay", 120, 6.90m, Currency.EUR)
+            };
+
+            foreach (var mediaItem in media)
+            {
+                printInformation(mediaItem);
+            }
+
         }
 
         //just a helper print function
-        static void printInformation(Dvd dvd)
+        static void printInformation(Media mediaItem)
         {
             var currency = Currency.EUR;
-            Console.WriteLine("Title ist: " + dvd.title + "\t Spielzeit ist: " + dvd.playingTime + "\t Der Preis ist: " + dvd.GetPrice(currency) + currency);
+            Console.WriteLine("Title ist: " + mediaItem.title + "\t Der Preis ist: " + mediaItem.GetPrice(currency) + currency);
         }
     }
 }
