@@ -11,23 +11,37 @@ namespace Task4
         private Price Price;
         private DateTime PublishingDate;
 
-        public Price Price
+        /*There is no UpdatePrice without currency - so nobody can change the price and wonder about currency */
+        public void UpdatePrice(decimal newPrice, Currency unit)
         {
-            get
+            
+            if (newPrice > 0)
             {
-                throw new NotImplementedException();
+                Price = new Price(newPrice, unit); 
+            }
+            else
+            {
+                throw new ArgumentException("Der Preis muss mehr als 0 sein: ", nameof(newPrice)); 
             }
         }
 
         public void UpdatePublishingDate(DateTime newDate)
         {
-            //TODO: Check NULL 
-            if (newDate.Year > 1995 && newDate.Year <= DateTime.Now.Year)
+            //TODO: Check NULL and next year in unit test
+            if (newDate.Year > 1995 && newDate.Year <= (DateTime.Now.Year)+1)
             {
                 PublishingDate = newDate; 
+            }
+            else
+            {
+                throw new ArgumentException("Das Datum muss minimal 1996 betragen und maximal das nächste Jahr: ", nameof(newDate));
             }
         }
 
         public string Title { get; }
+
+        Price IMedia.Price => Price;
+
+        DateTime IMedia.PublishingDate => PublishingDate;
     }
 }
