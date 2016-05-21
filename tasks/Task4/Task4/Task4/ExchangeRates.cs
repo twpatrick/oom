@@ -36,4 +36,5 @@ namespace Task4
             // and finally perform the currency conversion
             return rate;
         }
+    }
 }
