@@ -8,8 +8,22 @@ namespace Task4
 {
     class Dvd : IMedia
     {
-        private Price Price;
-        private DateTime PublishingDate;
+        private Price m_price;
+        private DateTime m_publishingDate;
+
+        public Dvd(string title, decimal price, DateTime PublishingDate)
+        {
+            if (String.IsNullOrWhiteSpace(title))
+            {
+                throw new ArgumentException("Der Titel darf nicht NULL sein oder nur aus Leertasten bestehen: ", nameof(title));
+            }
+            else
+            {
+                Title = title;
+                UpdatePrice(price, Currency.EUR);
+                UpdatePublishingDate(PublishingDate);
+            }
+        }
 
         /*There is no UpdatePrice without currency - so nobody can change the price and wonder about currency */
         public void UpdatePrice(decimal newPrice, Currency unit)
@@ -17,7 +31,7 @@ namespace Task4
             
             if (newPrice > 0)
             {
-                Price = new Price(newPrice, unit); 
+                m_price = new Price(newPrice, unit); 
             }
             else
             {
@@ -30,7 +44,7 @@ namespace Task4
             //TODO: Check NULL and next year in unit test
             if (newDate.Year > 1995 && newDate.Year <= (DateTime.Now.Year)+1)
             {
-                PublishingDate = newDate; 
+                m_publishingDate = newDate; 
             }
             else
             {
@@ -40,8 +54,8 @@ namespace Task4
 
         public string Title { get; }
 
-        Price IMedia.Price => Price;
+        public Price Price => m_price;
 
-        DateTime IMedia.PublishingDate => PublishingDate;
+        public DateTime PublishingDate => m_publishingDate;
     }
 }

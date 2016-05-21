@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Task4
 {
     class Price
-    {
+    { 
         public Price(decimal amount, Currency unit)
         {
             Amount = amount;
