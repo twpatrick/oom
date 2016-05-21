@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    interface IMedia
+    /* I think abstract class would be better but T3.1 expect an interface */
+    public interface IMedia
     {
         string Title { get; }
 
