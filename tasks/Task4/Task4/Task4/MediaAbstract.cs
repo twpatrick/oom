@@ -41,14 +41,21 @@ namespace Task4
 
         public void UpdatePublishingDate(DateTime newDate)
         {
-            //TODO: Check NULL and next year in unit test
-            if (newDate.Year > 1995 && newDate.Year <= (DateTime.Now.Year) + 1)
+            if (newDate.Year > 1995)
             {
-                m_publishingDate = newDate;
+                int compareResult = DateTime.Compare(newDate, DateTime.Now.AddYears(1));
+                if (compareResult <= 0)
+                {
+                    m_publishingDate = newDate;
+                }
+                else
+                {
+                    throw new ArgumentException("Das Datum kann nur maximal ein Jahr im Voraus eingetragen werden: ", nameof(newDate)); 
+                }
             }
             else
             {
-                throw new ArgumentException("Das Datum muss minimal 1996 betragen und maximal das nächste Jahr: ", nameof(newDate));
+                throw new ArgumentException("Das Datum muss minimal 1996 betragen: ", nameof(newDate));
             }
         }
 

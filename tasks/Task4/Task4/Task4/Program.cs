@@ -10,6 +10,7 @@ namespace Task4
     {
         static void Main(string[] args)
         {
+
             //create dvd array 
             var dvds = new[]
             {
