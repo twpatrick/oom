@@ -10,10 +10,10 @@ namespace Task4
     {
         private uint m_runtime; 
 
-        public Dvd(string title, decimal price, DateTime publishingDate, uint runtime)
+        public Dvd(string title, decimal price, Currency unit, DateTime publishingDate, uint runtime)
         {
             UpdateTitle(title);
-            UpdatePrice(price, Currency.EUR);
+            UpdatePrice(price, unit);
             UpdatePublishingDate(publishingDate);
             UpdateRuntime(runtime); 
         }
