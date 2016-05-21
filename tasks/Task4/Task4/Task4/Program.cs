@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,31 @@ namespace Task4
         static void Main(string[] args)
         {
 
+            tasks();
+            json(); 
+        }
+
+        static private void json()
+        {
+            var dvd1 = new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, new DateTime(2006, 12, 24), 925);
+
+            Console.WriteLine(JsonConvert.SerializeObject(dvd1, Formatting.Indented));
+
+            var settings = new JsonSerializerSettings() { Formatting = Formatting.Indented, TypeNameHandling = TypeNameHandling.Auto };
+            Console.WriteLine(JsonConvert.SerializeObject(dvd1, settings));
+
+            var text = JsonConvert.SerializeObject(dvd1,settings);
+            var desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var filename = Path.Combine(desktop, "dvd.json");
+            File.WriteAllText(filename, text);
+
+            var textFromFile = File.ReadAllText(filename);
+            var dvd2 = JsonConvert.DeserializeObject<Dvd>(textFromFile,settings);
+            Console.WriteLine("Titel ist: " + dvd2.Title); 
+        }
+
+        static private void tasks()
+        {
             //create dvd array 
             var dvds = new[]
             {
@@ -23,7 +50,7 @@ namespace Task4
             foreach (var dvd in dvds)
             {
                 printInformation(dvd);
-                dvd.UpdatePrice(100, Currency.EUR); 
+                dvd.UpdatePrice(100, Currency.EUR);
                 printInformation(dvd);
             }
 
@@ -38,11 +65,10 @@ namespace Task4
             {
                 printInformation(mediaItem);
             }
-
         }
 
         //just a helper print function
-        static void printInformation(MediaAbstract mediaItem)
+        static private void printInformation(MediaAbstract mediaItem)
         {
             Console.WriteLine("Title ist: " + mediaItem.Title + "\t kostet: " + mediaItem.Price.Amount + "\t wurde veröffentlicht am: " + mediaItem.PublishingDate); 
         }
