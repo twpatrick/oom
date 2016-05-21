@@ -47,6 +47,8 @@
     <Compile Include="Dvd.cs" />
     <Compile Include="ExchangeRates.cs" />
     <Compile Include="IMedia.cs" />
+    <Compile Include="MediaAbstract.cs" />
+    <Compile Include="MusicCd.cs" />
     <Compile Include="Price.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

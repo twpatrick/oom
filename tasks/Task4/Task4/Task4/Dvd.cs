@@ -6,56 +6,30 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    class Dvd : IMedia
+    class Dvd : MediaAbstract
     {
-        private Price m_price;
-        private DateTime m_publishingDate;
+        private uint m_runtime; 
 
-        public Dvd(string title, decimal price, DateTime PublishingDate)
+        public Dvd(string title, decimal price, DateTime publishingDate, uint runtime)
         {
-            if (String.IsNullOrWhiteSpace(title))
+            UpdateTitle(title);
+            UpdatePrice(price, Currency.EUR);
+            UpdatePublishingDate(publishingDate);
+            UpdateRuntime(runtime); 
+        }
+
+        private void UpdateRuntime(uint runtime)
+        {
+            if (runtime > 0)
             {
-                throw new ArgumentException("Der Titel darf nicht NULL sein oder nur aus Leertasten bestehen: ", nameof(title));
+                m_runtime = runtime; 
             }
             else
             {
-                Title = title;
-                UpdatePrice(price, Currency.EUR);
-                UpdatePublishingDate(PublishingDate);
+                throw new ArgumentException("Die Laufzeit muss länger als 0 Minuten sein: ", nameof(runtime)); 
             }
         }
 
-        /*There is no UpdatePrice without currency - so nobody can change the price and wonder about currency */
-        public void UpdatePrice(decimal newPrice, Currency unit)
-        {
-            
-            if (newPrice > 0)
-            {
-                m_price = new Price(newPrice, unit); 
-            }
-            else
-            {
-                throw new ArgumentException("Der Preis muss mehr als 0 sein: ", nameof(newPrice)); 
-            }
-        }
-
-        public void UpdatePublishingDate(DateTime newDate)
-        {
-            //TODO: Check NULL and next year in unit test
-            if (newDate.Year > 1995 && newDate.Year <= (DateTime.Now.Year)+1)
-            {
-                m_publishingDate = newDate; 
-            }
-            else
-            {
-                throw new ArgumentException("Das Datum muss minimal 1996 betragen und maximal das nächste Jahr: ", nameof(newDate));
-            }
-        }
-
-        public string Title { get; }
-
-        public Price Price => m_price;
-
-        public DateTime PublishingDate => m_publishingDate;
+        public uint Runtime => m_runtime; 
     }
 }

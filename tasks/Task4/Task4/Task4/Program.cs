@@ -10,7 +10,8 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-
+            Dvd a = new Dvd("Hallo", 9.99m, DateTime.Now);
+            Console.WriteLine(a.Title); 
         }
     }
 }
