@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Task4
 {
@@ -11,11 +12,17 @@ namespace Task4
         private uint m_runtime; 
 
         public Dvd(string title, decimal price, Currency unit, DateTime publishingDate, uint runtime)
+            : this(title, new Price(price, unit), publishingDate, runtime)
+        {
+        }
+
+        [JsonConstructor]
+        public Dvd(string title, Price price, DateTime publishingDate, uint runtime)
         {
             UpdateTitle(title);
-            UpdatePrice(price, unit);
+            UpdatePrice(price.Amount, price.Unit);
             UpdatePublishingDate(publishingDate);
-            UpdateRuntime(runtime); 
+            UpdateRuntime(runtime);
         }
 
         private void UpdateRuntime(uint runtime)
