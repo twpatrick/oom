@@ -13,10 +13,10 @@ namespace Task4.Tests
         [Test]
         public void CanCreateDvd()
         {
-            var x = new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, new DateTime(2006, 12, 24), 925);
+            var x = new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, new DateTimeOffset(new DateTime(2006, 12, 24)), 925);
             Assert.IsTrue(x.Title == "Dr. House - Staffel 1");
             Assert.IsTrue((decimal)x.Price.Amount == 12.99m);
-            Assert.IsTrue(x.PublishingDate == new DateTime(2006, 12, 24));
+            Assert.IsTrue(x.PublishingDate == new DateTimeOffset(new DateTime(2006, 12, 24)));
             Assert.IsTrue(x.Runtime == 925); 
         }
 
@@ -25,7 +25,7 @@ namespace Task4.Tests
         {
             Assert.Catch(() =>
             {
-                var x = new Dvd("", 12.99m, Currency.EUR, new DateTime(2006, 12, 24), 925);
+                var x = new Dvd("", 12.99m, Currency.EUR, new DateTimeOffset(new DateTime(2006, 12, 24)), 925);
             }); 
         }
 
@@ -34,7 +34,7 @@ namespace Task4.Tests
         {
             Assert.Catch(() =>
             {
-                var x = new Dvd("         ", 12.99m, Currency.EUR, new DateTime(2006, 12, 24), 925);
+                var x = new Dvd("         ", 12.99m, Currency.EUR, new DateTimeOffset(new DateTime(2006, 12, 24)), 925);
             });
         }
 
@@ -43,7 +43,7 @@ namespace Task4.Tests
         {
             Assert.Catch(() =>
             {
-                var x = new Dvd("Dr. House - Staffel 1", 0m, Currency.EUR, new DateTime(2006, 12, 24), 925);
+                var x = new Dvd("Dr. House - Staffel 1", 0m, Currency.EUR, new DateTimeOffset(new DateTime(2006, 12, 24)), 925);
             });
         }
 
@@ -52,14 +52,14 @@ namespace Task4.Tests
         {
             Assert.Catch(() =>
             {
-                var x = new Dvd("Dr. House - Staffel 1", -33.3m, Currency.EUR, new DateTime(2006, 12, 24), 925);
+                var x = new Dvd("Dr. House - Staffel 1", -33.3m, Currency.EUR, new DateTimeOffset(new DateTime(2006, 12, 24)), 925);
             });
         }
 
         [Test]
         public void CanCreateDvdWithPublishingDateFuture()
         {
-            var x = new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, DateTime.Now.AddMonths(11), 925);
+            var x = new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, DateTimeOffset.Now.AddMonths(11), 925);
             Assert.True(x.GetType() == typeof(Dvd)); 
         }
 
@@ -68,7 +68,7 @@ namespace Task4.Tests
         {
             Assert.Catch(() =>
             {
-                var x = new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, DateTime.Now.AddMonths(13), 925);
+                var x = new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, DateTimeOffset.Now.AddMonths(13), 925);
             });
         }
 

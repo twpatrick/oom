@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    /* I think abstract class would be better but T3.1 expect an interface */
+    /* interface for MediaAbstract */
     public interface IMedia
     {
         string Title { get; }
 
         Price Price { get; }
 
-        DateTime PublishingDate { get; } 
+        DateTimeOffset PublishingDate { get; } 
     }
 }

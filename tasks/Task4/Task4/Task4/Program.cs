@@ -19,7 +19,7 @@ namespace Task4
 
         static private void json()
         {
-            var dvd1 = new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, new DateTime(2006, 12, 24), 925);
+            var dvd1 = new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, new DateTimeOffset(new DateTime(2006, 12, 24)), 925);
 
             Console.WriteLine(JsonConvert.SerializeObject(dvd1, Formatting.Indented));
 
@@ -41,9 +41,9 @@ namespace Task4
             //create dvd array 
             var dvds = new[]
             {
-                new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, new DateTime(2006, 12, 24), 925),
-                new Dvd("Californation - Staffel 2", 9.99m, Currency.EUR, new DateTime(2007, 08, 30),324),
-                new Dvd("Game of Thrones - Staffel 6", 40.50m, Currency.EUR, DateTime.Now, 524),
+                new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, new DateTimeOffset(new DateTime(2006, 12, 24)), 925),
+                new Dvd("Californation - Staffel 2", 9.99m, Currency.EUR,new DateTimeOffset(new DateTime(2007, 08, 30)),324),
+                new Dvd("Game of Thrones - Staffel 6", 40.50m, Currency.EUR, new DateTimeOffset(DateTime.Now), 524),
             };
 
             //print all dvds in array, change the value, and print it again
@@ -57,8 +57,8 @@ namespace Task4
             //task3 todo 
             var media = new MediaAbstract[]
             {
-                new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, new DateTime(2006, 12, 24), 925),
-                new MusicCd("Highway to hell", 9.99m, Currency.USD, new DateTime(2014, 07, 01), "AC/DC")
+                new Dvd("Dr. House - Staffel 1", 12.99m, Currency.EUR, new DateTimeOffset(new DateTime(2006, 12, 24)), 925),
+                new MusicCd("Highway to hell", 9.99m, Currency.USD, new DateTimeOffset(new DateTime(2014, 07, 01)), "AC/DC")
             };
 
             foreach (var mediaItem in media)

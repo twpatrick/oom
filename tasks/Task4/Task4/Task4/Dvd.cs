@@ -11,13 +11,13 @@ namespace Task4
     {
         private uint m_runtime; 
 
-        public Dvd(string title, decimal price, Currency unit, DateTime publishingDate, uint runtime)
+        public Dvd(string title, decimal price, Currency unit, DateTimeOffset publishingDate, uint runtime)
             : this(title, new Price(price, unit), publishingDate, runtime)
         {
         }
 
         [JsonConstructor]
-        public Dvd(string title, Price price, DateTime publishingDate, uint runtime)
+        public Dvd(string title, Price price, DateTimeOffset publishingDate, uint runtime)
         {
             UpdateTitle(title);
             UpdatePrice(price.Amount, price.Unit);

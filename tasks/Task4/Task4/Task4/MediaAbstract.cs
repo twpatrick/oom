@@ -9,7 +9,7 @@ namespace Task4
     class MediaAbstract : IMedia
     {
         private Price m_price;
-        private DateTime m_publishingDate;
+        private DateTimeOffset m_publishingDate;
         private string m_title; 
 
         /*There is no UpdatePrice without currency - so nobody can change the price and wonder about currency */
@@ -39,11 +39,11 @@ namespace Task4
             }
         }
 
-        public void UpdatePublishingDate(DateTime newDate)
+        public void UpdatePublishingDate(DateTimeOffset newDate)
         {
             if (newDate.Year > 1995)
             {
-                int compareResult = DateTime.Compare(newDate, DateTime.Now.AddYears(1));
+                int compareResult = DateTimeOffset.Compare(newDate, DateTimeOffset.Now.AddYears(1));
                 if (compareResult <= 0)
                 {
                     m_publishingDate = newDate;
@@ -63,6 +63,6 @@ namespace Task4
 
         public Price Price => m_price;
 
-        public DateTime PublishingDate => m_publishingDate;
+        public DateTimeOffset PublishingDate => m_publishingDate;
     }
 }

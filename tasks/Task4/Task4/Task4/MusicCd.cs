@@ -10,7 +10,7 @@ namespace Task4
     {
         private string m_author; 
 
-        public MusicCd(string title, decimal price, Currency unit, DateTime publishingDate, string author)
+        public MusicCd(string title, decimal price, Currency unit, DateTimeOffset publishingDate, string author)
         {
             UpdateTitle(title);
             UpdatePrice(price, unit);
