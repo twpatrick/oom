@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,17 @@ namespace Task4
 {
     class MusicCd : MediaAbstract
     {
-        private string m_author; 
-
+        private string m_author;
         public MusicCd(string title, decimal price, Currency unit, DateTimeOffset publishingDate, string author)
+            : this(title, new Price(price, unit), publishingDate, author)
+        {
+        }
+
+        [JsonConstructor]
+        public MusicCd(string title, Price price, DateTimeOffset publishingDate, string author)
         {
             UpdateTitle(title);
-            UpdatePrice(price, unit);
+            UpdatePrice(price.Amount, price.Unit);
             UpdatePublishingDate(publishingDate);
             UpdateAuthor(author); 
         }
