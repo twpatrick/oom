@@ -12,7 +12,8 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            Subject.Run();
+            Tasks.Run();
+          //  Subject.Run();
           //  tasks();
           //  json(); 
         }
