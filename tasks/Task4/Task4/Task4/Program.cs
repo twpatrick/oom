@@ -12,9 +12,9 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-
-            tasks();
-            json(); 
+            Subject.Run();
+          //  tasks();
+          //  json(); 
         }
 
         static private void json()
